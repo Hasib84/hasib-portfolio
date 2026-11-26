@@ -1,0 +1,8 @@
+{
+  "runtime": "typescript",
+  "platformVersion": 31,
+  "entry": "client/dist/index.html",
+  "name": "Hasib Mahamud Portfolio — Backend",
+  "slug": "hasib-mahamud-portfolio-backend",
+  "managedCronJobs": []
+}

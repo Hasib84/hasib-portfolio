@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Build & TypeScript outputs
+backend/client/dist/
+backend/client/dist-cvm/
+*.tsbuildinfo
+*.tsbuildinfo.*
+
+# Local SQLite database (contains admin password hash & session tokens; live server seeds from seed.ts)
+backend/app.db
+backend/app.db-shm
+backend/app.db-wal
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Legacy package lock
+backend/bun.lock
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db

@@ -1,0 +1,14 @@
+{
+  "name": "hasib-mahamud-portfolio-workspace",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "dev": "npm --prefix backend run dev",
+    "install:backend": "npm --prefix backend install",
+    "build": "npm --prefix backend run build",
+    "start": "npm --prefix backend start",
+    "typecheck": "npm --prefix backend run typecheck"
+  }
+}

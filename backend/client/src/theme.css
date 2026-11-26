@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+@import "tailwindcss";
+@import "tailwindcss-safe-area";
+
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 28px;
+  --text-xl: 20px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 36px;
+  --text-4xl: 36px;
+  --text-4xl--line-height: 40px;
+  --text-5xl: 48px;
+  --text-5xl--line-height: 52px;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* This portfolio is a dark, cinematic design in both system modes. */
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0b;
+  --surface: #141416;
+  --text: #f5f1ea;
+  --dim: #9a958c;
+  --border: #26241f;
+  --accent: #ff6a00;
+  --radius: 12px;
+  --space-surface: var(--surface);
+  --space-surface-alt: #1a1a1d;
+  --space-muted: var(--dim);
+  --space-border: var(--border);
+  --space-accent: var(--accent);
+}
+
+@layer base {
+  button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) {
+    min-height: 2rem;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+  }
+}
+
+/* ---- Hero name: slow drift + periodic sheen sweep (name stays fully lit) ---- */
+@keyframes nameDrift {
+  0%, 100% { transform: translateX(-0.6%) translateY(0); }
+  50% { transform: translateX(0.6%) translateY(-0.8%); }
+}
+.name-drift {
+  animation: nameDrift 11s ease-in-out infinite;
+}
+@keyframes sheenSweep {
+  0%, 55% { background-position: 130% 0; }
+  85%, 100% { background-position: -30% 0; }
+}
+.sheen-layer {
+  background-image: linear-gradient(
+    100deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 58%
+  );
+  background-size: 280% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sheenSweep 6.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .name-drift, .sheen-layer, .badge-float, .marquee-track, .marquee-track-rev, .playhead-line {
+    animation: none !important;
+  }
+}
+
+/* ---- Floating tool badges ---- */
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
+}
+.badge-float {
+  animation: badgeFloat 5.2s ease-in-out infinite;
+}
+
+/* ---- Marquees (film strip, partner logos) ---- */
+@keyframes marqueeX {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marqueeX 36s linear infinite;
+}
+.marquee-track-fast {
+  animation: marqueeX 22s linear infinite;
+}
+.marquee-paused:hover .marquee-track,
+.marquee-paused:hover .marquee-track-fast {
+  animation-play-state: paused;
+}
+
+/* ---- Timeline playhead ---- */
+@keyframes playheadMove {
+  from { left: 0%; }
+  to { left: 100%; }
+}
+.playhead-line {
+  animation: playheadMove 11s linear infinite;
+}
+
+/* Film-strip sprocket holes */
+.sprockets {
+  background-image: radial-gradient(circle, #0a0a0b 3.2px, transparent 3.6px);
+  background-size: 22px 12px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* Hide scrollbars on track rails while keeping scroll */
+.rail-scroll {
+  scrollbar-width: none;
+}
+.rail-scroll::-webkit-scrollbar {
+  display: none;
+}
